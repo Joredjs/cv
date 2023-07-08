@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="styles" href="main.css" />
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						gridTemplateRows: {
+							10: "repeat(10, minmax(0, 1fr))",
+							12: "repeat(12, minmax(0, 1fr))",
+						},
+						gridRow: {
+							"span-9": "span 9 / span 9",
+							"span-10": "span 10 / span 10",
+						},
+					},
+				},
+			};
+		</script>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+			* {
+				font-family: "Roboto", sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="grid grid-cols-9 bg-slate-700 text-white">
+			<div class="col-span-7 grid grid-rows-6 gap-2 flex pt-3">
+				<div class="flex items-center justify-around row-span-4 mb-2">
+					<div>
+						<img class="rounded-lg" src="https://picsum.photos/100" />
+					</div>
+					<div class="text-3xl font-semibold">
+						Jorge Eduardo Garay Gutierrez
+					</div>
+				</div>
+				<div class="row-span-2 bg-slate-600 text-xs flex justify-around">
+					<div class="flex items-center">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+							/>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+							/>
+						</svg>
+						<span class="px-2">Bogotá, Colombia</span>
+						<img
+							src="https://flagicons.lipis.dev/flags/1x1/co.svg"
+							width="15px"
+						/>
+					</div>
+					<div class="flex items-center">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"
+							/>
+						</svg>
+						<span class="px-2">Fully remote</span>
+					</div>
+					<div class="flex items-center">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-6 h-6"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+						<span class="px-2">$75k - $99k</span>
+					</div>
+				</div>
+			</div>
+			<div
+				class="col-span-2 bg-slate-800 flex flex-col justify-around px-5 text-xs"
+			>
+				<div class="flex justify-between items-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"
+						/>
+					</svg>
+					<span class="px-2">11 years</span>
+				</div>
+				<div class="flex justify-between items-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+						/>
+					</svg>
+					<span class="px-2">English - C1</span>
+				</div>
+				<div class="flex justify-between items-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+						/>
+					</svg>
+					<span class="px-2"> bit.ly/jorge-garay</span>
+				</div>
+				<div class="flex justify-between items-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+						/>
+					</svg>
+					<span class="">odraude160@gmail.com</span>
+				</div>
+			</div>
+		</header>
+		<section class="bg-stone-100">
+			<div class="grid grid-cols-2">
+				<div class="col-span-1 grid grid-rows-10">
+					<div
+						class="row-span-1 bg-stone-50 text-2xl font-bold flex justify-center items-center"
+					>
+						About
+					</div>
+					<div
+						class="row-span-9 flex flex-col justify-around p-3 text-xs/5 font-light"
+					>
+						<p class="">
+							With over 10 years of experience in the industry, my career began
+							as a junior frontend developer in 2012. Throughout the years, I
+							have held various development roles, including backend, fullstack,
+							technical lead, innovation leader, and engineering manager, among
+							others. I have successfully managed and coordinated teams, and in
+							particular, since the pandemic, I have been deeply involved in
+							defining processes and implementing organizational structures
+							within my current company, which operates entirely remotely, which
+							has allowed me to adapt to the demands of the virtual work,
+							letting me work from anywhere, on particular, from Europe for 6
+							months.
+						</p>
+						<p>
+							I have had the privilege of working for a consulting firm that has
+							exposed me to a wide range of clients and companies across Latin
+							America. This extensive experience has not only broadened my
+							technical skills but has also enhanced my ability to understand
+							and meet the unique needs of different organizations. I am
+							passionate about leveraging my expertise and knowledge to drive
+							innovation, deliver exceptional results, and contribute to the
+							success of the clients I work with.
+						</p>
+					</div>
+				</div>
+				<div class="col-span-1 grid grid-rows-10">
+					<div
+						class="row-span-1 text-slate-700 text-2xl font-bold flex justify-center items-center"
+					>
+						Seniority
+					</div>
+					<div class="row-span-9 bg-stone-50 flex flex-col p-3">
+						<div class="flex justify-around">
+							<div class="">
+								<canvas id="seniority" width="250"></canvas>
+							</div>
+							<div class="text-slate-700 flex flex-col justify-around h-full">
+								<div class="flex flex-col items-center justify-center">
+									<span class="text-xs font-bold">Technology</span>
+									<span class="text-xs font-light">Master</span>
+								</div>
+								<div class="flex flex-col items-center justify-center">
+									<span class="text-xs font-bold">System</span>
+									<span class="text-xs font-light">Leads</span>
+								</div>
+								<div class="flex flex-col items-center justify-center">
+									<span class="text-xs font-bold">People</span>
+									<span class="text-xs font-light">Manages</span>
+								</div>
+								<div class="flex flex-col items-center justify-center">
+									<span class="text-xs font-bold">Process</span>
+									<span class="text-xs font-light">Defines</span>
+								</div>
+								<div class="flex flex-col items-center justify-center">
+									<span class="text-xs font-bold">Influence</span>
+									<span class="text-xs font-light">Company</span>
+								</div>
+							</div>
+						</div>
+						<div class="text-xs text-stone-300 font-light text-center">
+							Based on engineeringladders framework
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="">
+			<canvas id="hours" width="300" height="100"></canvas>
+		</section>
+		<section id=""></section>
+	</body>
+	<script>
+		const dataSenior = {
+			labels: ["Technology", "System", "People", "Process", "Influence"],
+			datasets: [
+				{
+					label: "My First Dataset",
+					data: [81, 99, 90, 95, 75],
+					fill: true,
+					backgroundColor: "rgba(25, 99, 132, 0.2)",
+					borderColor: "rgb(25, 99, 132, 0.3)",
+					pointBackgroundColor: "rgb(25, 99, 132)",
+					pointBorderColor: "#000",
+					pointHoverBackgroundColor: "#fff",
+					pointHoverBorderColor: "rgb(255, 99, 132)",
+				},
+			],
+		};
+
+		const dataHours = {
+			labels: ["2023", "2022", "2021", "2020", "2019", "2018", "2017"],
+			datasets: [
+				{
+					data: [900, 80, 12000, 500, 750, 100, 40],
+					backgroundColor: ["rgba(25, 99, 132, 0.2)"],
+					borderColor: ["rgb(25, 99, 132)"],
+					barThickness: 6,
+					maxBarThickness: 8,
+					minBarLength: 2,
+					borderWidth: 1,
+				},
+			],
+		};
+
+		new Chart(document.getElementById("seniority"), {
+			type: "radar",
+			data: dataSenior,
+			options: {
+				plugins: {
+					legend: { display: false },
+				},
+				scales: {
+					r: {
+						max: 100,
+						min: 0,
+						ticks: {
+							stepSize: 20,
+							display: false,
+						},
+					},
+				},
+				layout: {
+					padding: 0,
+				},
+			},
+		});
+
+		new Chart(document.getElementById("hours"), {
+			type: "bar",
+			data: dataHours,
+			options: {
+				indexAxis: "y",
+				plugins: {
+					legend: { display: false },
+					labels: {},
+				},
+				layout: {
+					padding: 0,
+				},
+				scales: {
+					x: {
+						stacked: true,
+					},
+					y: {
+						stacked: true,
+					},
+				},
+			},
+		});
+	</script>
+</html>
